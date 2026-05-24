@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #E7E5E4;
+  --foreground: #1E2938;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', sans-serif;
+}
+
+@layer components {
+  .neu-card {
+    @apply bg-surface shadow-neu-flat rounded-neu p-6;
+  }
+  
+  .neu-button {
+    @apply bg-surface shadow-neu-sm rounded-lg px-4 py-2 transition-all active:shadow-neu-sm-pressed;
+  }
+  
+  .neu-input {
+    @apply bg-surface shadow-neu-sm-pressed rounded-lg px-4 py-2 outline-none;
+  }
+}
