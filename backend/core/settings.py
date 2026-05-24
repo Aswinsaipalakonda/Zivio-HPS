@@ -117,8 +117,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        # Clerk JWT Authentication will be added here
+        'core.clerk_auth.ClerkJWTAuthentication',
     ],
 }
+
+CLERK_JWKS_URL = os.getenv('CLERK_JWKS_URL')
