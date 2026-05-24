@@ -1,8 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #006666;
+  --color-secondary: #F1F2F5;
+  --color-success: #00A63D;
+  --color-warning: #FE9900;
+  --color-danger: #FF2157;
+  --color-surface: #E7E5E4;
+  --color-text: #1E2938;
+  --color-zivio-blue: #3A9DE9;
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Space Mono", "JetBrains Mono", monospace;
+
+  --shadow-neu-flat: 8px 8px 16px #c5c5c5, -8px -8px 16px #ffffff;
+  --shadow-neu-pressed: inset 8px 8px 16px #c5c5c5, inset -8px -8px 16px #ffffff;
+  --shadow-neu-sm: 4px 4px 8px #c5c5c5, -4px -4px 8px #ffffff;
+  --shadow-neu-sm-pressed: inset 4px 4px 8px #c5c5c5, inset -4px -4px 8px #ffffff;
+
+  --radius-neu: 20px;
+}
 
 :root {
   --background: #E7E5E4;
@@ -12,19 +31,32 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
 }
 
-@layer components {
-  .neu-card {
-    @apply bg-surface shadow-neu-flat rounded-neu p-6;
-  }
+@utility neu-card {
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-neu-flat);
+  border-radius: var(--radius-neu);
+  padding: 1.5rem;
+}
+
+@utility neu-button {
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-neu-sm);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease-in-out;
   
-  .neu-button {
-    @apply bg-surface shadow-neu-sm rounded-lg px-4 py-2 transition-all active:shadow-neu-sm-pressed;
+  &:active {
+    box-shadow: var(--shadow-neu-sm-pressed);
   }
-  
-  .neu-input {
-    @apply bg-surface shadow-neu-sm-pressed rounded-lg px-4 py-2 outline-none;
-  }
+}
+
+@utility neu-input {
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-neu-sm-pressed);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  outline: none;
 }
