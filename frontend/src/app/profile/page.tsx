@@ -106,7 +106,7 @@ export default function ProfilePage() {
             {/* Profile Card */}
             <Card variant="flat" padding="lg" className="w-full flex flex-col items-center">
               {/* Profile Photo Wrapper */}
-              <div className="w-24 h-24 rounded-full border border-slate-100 dark:border-slate-800 flex items-center justify-center mb-6 shrink-0 bg-slate-50 dark:bg-slate-850">
+              <div className="w-24 h-24 rounded-full border border-slate-100 dark:border-slate-800 flex items-center justify-center mb-6 shrink-0 bg-slate-50 dark:bg-slate-800/40">
                 <Avatar
                   name={user.full_name}
                   imageUrl={user.profile_picture_url}

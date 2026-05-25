@@ -107,7 +107,7 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ navItems, user }
                   className={`flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-[13px] font-bold transition-all ${
                     isActive
                       ? "bg-[#EAF3FC] dark:bg-blue-950/30 text-[#3A9DE9]"
-                      : "text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-850 hover:text-slate-700 dark:hover:text-slate-200"
+                      : "text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:text-slate-700 dark:hover:text-slate-200"
                   }`}
                 >
                   <Icon className={`w-[18px] h-[18px] shrink-0 ${isActive ? "text-[#3A9DE9]" : "text-slate-400 dark:text-slate-500"}`} />
@@ -136,7 +136,7 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ navItems, user }
                     className={`flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-[13px] font-bold transition-all ${
                       isActive
                         ? "bg-[#EAF3FC] dark:bg-blue-950/30 text-[#3A9DE9]"
-                        : "text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-850 hover:text-slate-700 dark:hover:text-slate-200"
+                        : "text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:text-slate-700 dark:hover:text-slate-200"
                     }`}
                   >
                     <Icon className={`w-[18px] h-[18px] shrink-0 ${isActive ? "text-[#3A9DE9]" : "text-slate-400 dark:text-slate-500"}`} />
