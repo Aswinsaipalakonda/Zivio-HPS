@@ -1,93 +1,143 @@
 import { SignIn } from "@clerk/nextjs";
 import Image from "next/image";
+import { CheckSquare, Calendar, BarChart3 } from "lucide-react";
 
 export default function SignInPage() {
   return (
-    <main className="min-h-screen grid grid-cols-1 md:grid-cols-12 bg-surface text-text">
-      {/* Left half (desktop only) */}
-      <section className="hidden md:flex md:col-span-5 bg-primary p-12 flex-col justify-between text-white relative overflow-hidden">
-        {/* Subtle background graphic or glow representing monochromatic playfulness */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
+    <main className="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-surface text-text font-sans">
+      {/* Left Column (Desktop Hero - 5 cols) */}
+      <section className="hidden lg:flex lg:col-span-5 relative p-12 flex-col justify-between text-white overflow-hidden">
+        {/* Rich dark teal & deep spruce gradient background for premium contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#002626] via-[#003838] to-[#006666] z-0" />
         
-        {/* Logo and Tagline */}
-        <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-6">
-            <Image
-              src="/logo_white.png"
-              alt="HPS Logo"
-              width={160}
-              height={50}
-              className="object-contain"
-              priority
-            />
-          </div>
-          <h1 className="font-mono text-3xl font-bold tracking-tight mb-4 uppercase">
-            Zivio
+        {/* Hero image overlay with opacity and elegant mix-blend-mode */}
+        <div className="absolute inset-0 z-10 opacity-30 mix-blend-overlay">
+          <Image
+            src="/zivio_login_hero.png"
+            alt="Workspace Hero"
+            fill
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+        
+        {/* Subtle decorative curved layout lines */}
+        <div className="absolute inset-0 z-10 opacity-20 pointer-events-none">
+          <svg className="w-full h-full text-white" fill="none" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0,100 C30,40 70,60 100,0 L100,100 Z" fill="currentColor" />
+          </svg>
+        </div>
+
+        {/* Top brand signature */}
+        <div className="relative z-20">
+          <Image
+            src="/logo_white.png"
+            alt="HPS Logo"
+            width={140}
+            height={44}
+            className="object-contain mb-2"
+            priority
+          />
+          <span className="font-mono text-[10px] tracking-widest text-white/40 uppercase">
+            Productivity Suite
+          </span>
+        </div>
+
+        {/* Center elegant Geist typography */}
+        <div className="relative z-20 my-auto py-8">
+          <h1 className="text-4xl xl:text-5xl font-extrabold tracking-tight leading-tight mb-6">
+            Manage your <br />
+            <span className="italic font-light text-white/90 font-serif">Team Activity</span> <br />
+            Brilliantly.
           </h1>
-          <p className="font-mono text-lg font-medium text-white/90 leading-snug">
-            "Every task. Every person. Every day."
+          <p className="text-sm xl:text-base text-white/70 max-w-sm leading-relaxed font-light">
+            All-in-one platform to coordinate daily tasks, record seamless attendance logs, and track performance metrics instantly.
           </p>
         </div>
 
-        {/* Decorative Description */}
-        <div className="relative z-10 max-w-sm">
-          <h2 className="font-mono text-xs font-bold tracking-widest uppercase text-white/60 mb-2">
-            Platform Capabilities
-          </h2>
-          <p className="font-mono text-sm text-white/80 leading-relaxed">
-            A minimal, tactile dashboard created for high-performing teams to align daily goals, register attendance, and review analytical metrics seamlessly.
-          </p>
-          <div className="mt-8 flex gap-2 font-mono text-[10px] text-white/40 uppercase">
-            <span>Security Verified</span>
-            <span>•</span>
-            <span>Clerk JWT Active</span>
+        {/* Bottom features indicators (aligned like the Opulea screen) */}
+        <div className="relative z-20 space-y-4 pt-4 border-t border-white/15">
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white/90 shrink-0">
+              <CheckSquare className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-white">
+                Smart Tasking
+              </h3>
+              <p className="text-[11px] text-white/60 font-light">
+                Coordinate and assign team milestones every morning.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white/90 shrink-0">
+              <Calendar className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-white">
+                Auto Attendance
+              </h3>
+              <p className="text-[11px] text-white/60 font-light">
+                Idempotent check-ins recorded automatically on load.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white/90 shrink-0">
+              <BarChart3 className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-white">
+                Insights Dashboard
+              </h3>
+              <p className="text-[11px] text-white/60 font-light">
+                Aggregate daily status indexes and work metrics.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Right half (or full screen on mobile) */}
-      <section className="col-span-1 md:col-span-7 flex flex-col justify-center items-center p-6 md:p-12">
-        {/* Mobile Header */}
-        <div className="md:hidden flex flex-col items-center mb-8 text-center">
+      {/* Right Column (Clerk Login Card - 7 cols) */}
+      <section className="col-span-1 lg:col-span-7 flex flex-col justify-center items-center p-6 sm:p-12 lg:p-16">
+        
+        {/* Sleek logo for both mobile and desktop right side */}
+        <div className="flex flex-col items-center mb-8 text-center max-w-sm">
           <Image
             src="/logo.png"
             alt="HPS Logo"
             width={120}
-            height={40}
-            className="object-contain mb-4"
+            height={38}
+            className="object-contain mb-3"
             priority
           />
-          <h1 className="font-mono text-2xl font-bold uppercase tracking-wide">
-            Zivio
-          </h1>
-          <p className="font-mono text-xs font-semibold text-text/60">
-            "Every task. Every person. Every day."
+          <h2 className="text-2xl font-black uppercase tracking-widest text-primary mb-1">
+            Welcome Back
+          </h2>
+          <p className="text-xs font-medium text-text/50 font-mono tracking-wide">
+            Google auth allowlist gateway active
           </p>
         </div>
 
-        {/* Tactile Neumorphic Card holding Clerk SignIn */}
+        {/* Tactile pressed / flat Neumorphic form holder */}
         <div className="w-full max-w-md bg-surface rounded-neu shadow-neu-flat border border-white/60 p-8 flex flex-col items-center">
-          <div className="text-center mb-6">
-            <h2 className="font-mono text-xl font-bold text-text mb-1 tracking-wide uppercase">
-              Welcome to Zivio
-            </h2>
-            <p className="text-xs font-medium text-text/60 font-sans">
-              Sign in with your company Google account
-            </p>
-          </div>
-
+          
           <div className="w-full flex justify-center py-2">
             <SignIn
               appearance={{
                 elements: {
                   card: "shadow-none bg-transparent border-0 w-full",
-                  header: "hidden",
-                  footerAction: "hidden", // Hide Sign Up redirect
+                  header: "hidden", // COMPLETELY HIDES Clerk's duplicate "Sign in to Zivio - HPS" headers
+                  footerAction: "hidden", // Completely hides sign-up redirections
                   dividerRow: "hidden",
-                  formButtonPrimary: "neu-button bg-primary text-white hover:bg-opacity-90 active:shadow-neu-sm-pressed active:translate-y-[1px] font-mono text-sm font-semibold rounded-lg w-full h-11 border-0",
-                  socialButtonsBlockButton: "neu-button border border-white/30 text-text/80 font-mono text-xs hover:translate-y-[-1px] active:translate-y-[1px] rounded-lg w-full h-11 shadow-neu-sm bg-surface active:shadow-neu-sm-pressed",
+                  formButtonPrimary: "neu-button bg-primary text-white hover:bg-opacity-95 active:shadow-neu-sm-pressed active:translate-y-[1px] font-mono text-xs font-bold uppercase tracking-wider rounded-lg w-full h-11 border-0 shadow-neu-sm",
+                  socialButtonsBlockButton: "neu-button border border-white/40 text-text/80 font-mono text-xs hover:translate-y-[-1px] active:translate-y-[1px] rounded-lg w-full h-11 shadow-neu-sm bg-surface active:shadow-neu-sm-pressed",
                   formFieldInput: "neu-input bg-surface shadow-neu-sm-pressed font-mono text-sm border-0 rounded-lg w-full h-11 text-text",
-                  formFieldLabel: "font-mono text-xs text-text/80 mb-1 font-bold",
+                  formFieldLabel: "font-mono text-xs text-text/80 mb-1.5 font-bold tracking-wide uppercase",
                   footer: "hidden"
                 },
                 variables: {
@@ -98,13 +148,13 @@ export default function SignInPage() {
             />
           </div>
 
-          {/* Strict Allowlist Footer Warning */}
-          <div className="mt-6 border-t border-text/10 pt-4 w-full text-center">
-            <p className="font-mono text-[10px] text-danger/80 font-bold uppercase tracking-wider">
-              ⚠️ Strict Authorization Active
+          {/* Secure details warning footer (Very subtle) */}
+          <div className="mt-8 border-t border-text/10 pt-4 w-full text-center">
+            <p className="font-mono text-[9px] text-danger/80 font-extrabold uppercase tracking-widest">
+              Strict allowlist security
             </p>
-            <p className="text-[11px] text-text/50 font-sans mt-1">
-              Only approved company emails can access this system. Unregistered users will be redirected to the access denied page.
+            <p className="text-[10px] text-text/45 mt-1 leading-relaxed max-w-[280px] mx-auto">
+              Access is strictly restricted to pre-registered Google accounts. Contact the administration department for queries.
             </p>
           </div>
         </div>

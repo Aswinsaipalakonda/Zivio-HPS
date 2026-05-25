@@ -11,13 +11,13 @@ colors:
   neutral: "#E7E5E4"
 typography:
   h1:
-    fontFamily: "Space Mono"
+    fontFamily: "Geist"
     fontSize: 3rem
   body-md:
-    fontFamily: "Space Mono"
+    fontFamily: "Geist"
     fontSize: 1rem
   label-caps:
-    fontFamily: "JetBrains Mono"
+    fontFamily: "Geist Mono"
     fontSize: 0.75rem
   sourceScale: "desktop-first expressive scale"
   weights: "100, 200, 300, 400, 500, 600, 700, 800, 900"
@@ -38,7 +38,7 @@ Soft, extruded UI elements with inner and outer shadows on monochromatic surface
 
 - **Visual style:** minimal, clean, high-contrast, playful, matrix
 - **Typography scale:** desktop-first expressive scale
-- **Typography fonts:** primary=Space Mono, display=Space Mono, mono=JetBrains Mono
+- **Typography fonts:** primary=Geist, display=Geist, mono=Geist Mono
 - **Typography weights:** 100, 200, 300, 400, 500, 600, 700, 800, 900
 - **Color palette:** primary, secondary, success, warning, danger, info
 - **Spacing scale:** compact density mode

@@ -12,8 +12,8 @@
   --color-text: #1E2938;
   --color-zivio-blue: #3A9DE9;
 
-  --font-sans: "Inter", sans-serif;
-  --font-mono: "Space Mono", "JetBrains Mono", monospace;
+  --font-sans: var(--font-sans), "Geist", "Geist Fallback", sans-serif;
+  --font-mono: var(--font-mono), "Geist Mono", "Geist Mono Fallback", monospace;
 
   --shadow-neu-flat: 8px 8px 16px #c5c5c5, -8px -8px 16px #ffffff;
   --shadow-neu-pressed: inset 8px 8px 16px #c5c5c5, inset -8px -8px 16px #ffffff;
