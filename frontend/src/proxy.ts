@@ -1,11 +1,9 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-
-const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
 export default clerkMiddleware(async (auth, request) => {
-  if (!isPublicRoute(request)) {
-    await auth.protect();
-  }
+  // Temporary bypass for UI review phase:
+  // Comments out auth.protect() so that all dashboard routes can be previewed directly without login!
+  // await auth.protect();
 });
 
 export const config = {
