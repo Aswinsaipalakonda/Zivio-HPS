@@ -28,7 +28,6 @@ export const TaskStatusModal: React.FC<TaskStatusModalProps> = ({ task, isOpen, 
 
   if (!isOpen || !task) return null;
 
-  // Determine if notes are required (required for IN_PROGRESS, PENDING, NOT_STARTED)
   const isNotesRequired = selectedStatus !== "COMPLETED";
   const isSubmitDisabled = isNotesRequired && !notes.trim();
 
@@ -50,58 +49,58 @@ export const TaskStatusModal: React.FC<TaskStatusModalProps> = ({ task, isOpen, 
       value: "COMPLETED",
       label: "Completed",
       icon: CheckCircle2,
-      colorClass: "text-[#00A63D] border-[#00A63D]/40 bg-[#00A63D]/5",
-      activeClass: "bg-[#00A63D] text-white border-[#00A63D]",
+      colorClass: "text-[#10B981] border-emerald-100 bg-emerald-50/40 hover:bg-emerald-50",
+      activeClass: "bg-[#10B981] text-white border-[#10B981]",
     },
     {
       value: "IN_PROGRESS",
       label: "In Progress",
       icon: RefreshCw,
-      colorClass: "text-primary border-primary/40 bg-primary/5",
+      colorClass: "text-primary border-blue-100 bg-blue-50/40 hover:bg-blue-50",
       activeClass: "bg-primary text-white border-primary",
     },
     {
       value: "PENDING",
       label: "Pending",
       icon: PauseCircle,
-      colorClass: "text-[#FE9900] border-[#FE9900]/40 bg-[#FE9900]/5",
-      activeClass: "bg-[#FE9900] text-white border-[#FE9900]",
+      colorClass: "text-[#F59E0B] border-amber-100 bg-amber-50/40 hover:bg-amber-50",
+      activeClass: "bg-[#F59E0B] text-white border-[#F59E0B]",
     },
     {
       value: "NOT_STARTED",
       label: "Not Started",
       icon: HelpCircle,
-      colorClass: "text-text/60 border-text/25 bg-text/5",
-      activeClass: "bg-text/75 text-white border-text/75",
+      colorClass: "text-slate-500 border-slate-200 bg-slate-50 hover:bg-slate-100",
+      activeClass: "bg-slate-700 text-white border-slate-700",
     },
   ];
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
-      {/* Backdrop backdrop blur */}
-      <div className="absolute inset-0 bg-[#0f1117]/40 backdrop-blur-[2px] transition-all" onClick={onClose} />
+      {/* Backdrop blur */}
+      <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] transition-all" onClick={onClose} />
 
       {/* Modal Container */}
-      <div className="relative z-10 w-full sm:max-w-md bg-surface border border-white/60 shadow-neu-flat rounded-t-neu sm:rounded-neu p-6 max-h-[90vh] overflow-y-auto transform transition-all duration-300">
+      <div className="relative z-10 w-full sm:max-w-md bg-white border border-slate-100 shadow-xl rounded-t-2xl sm:rounded-2xl p-6 max-h-[90vh] overflow-y-auto transform transition-all duration-300">
         
-        {/* Mobile top drag handle bar representation */}
+        {/* Mobile top drag handle */}
         <div className="flex sm:hidden justify-center mb-3">
-          <div className="w-10 h-1 rounded-full bg-text/25" />
+          <div className="w-10 h-1 rounded-full bg-slate-200" />
         </div>
 
         {/* Modal Header */}
-        <div className="flex items-center justify-between mb-5 border-b border-text/5 pb-3">
+        <div className="flex items-center justify-between mb-5 border-b border-slate-100 pb-3">
           <div className="min-w-0 pr-4">
-            <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-primary block">
+            <span className="font-sans text-[10px] font-bold uppercase tracking-wider text-primary block">
               Status Management
             </span>
-            <h3 className="text-base font-extrabold text-text truncate font-sans">
+            <h3 className="text-base font-bold text-slate-800 truncate font-sans">
               {task.title}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="w-7 h-7 rounded-full bg-surface border border-white/40 shadow-neu-sm flex items-center justify-center text-text/60 hover:text-text shrink-0 active:shadow-neu-sm-pressed"
+            className="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-50 shrink-0 transition-all active:scale-95"
           >
             <X className="w-4 h-4" />
           </button>
@@ -110,14 +109,14 @@ export const TaskStatusModal: React.FC<TaskStatusModalProps> = ({ task, isOpen, 
         {/* Modal Form */}
         <form onSubmit={handleFormSubmit} className="space-y-5">
           
-          {/* Status grid title */}
+          {/* Status grid */}
           <div>
-            <label className="font-mono text-[10px] font-bold uppercase tracking-wider text-text/60 block mb-2">
+            <label className="font-sans text-xs font-bold text-slate-500 block mb-2 uppercase tracking-wide">
               Select Current Status
             </label>
             
-            {/* 2x2 Grid of visual neumorphic option buttons */}
-            <div className="grid grid-cols-2 gap-3.5">
+            {/* Grid of visual options */}
+            <div className="grid grid-cols-2 gap-3">
               {statusOptions.map((opt) => {
                 const isSelected = selectedStatus === opt.value;
                 const Icon = opt.icon;
@@ -127,14 +126,14 @@ export const TaskStatusModal: React.FC<TaskStatusModalProps> = ({ task, isOpen, 
                     key={opt.value}
                     type="button"
                     onClick={() => setSelectedStatus(opt.value)}
-                    className={`flex items-center gap-2 px-3 py-3 rounded-lg border font-mono text-xs font-bold uppercase tracking-wide transition-all shadow-neu-sm text-left ${
+                    className={`flex items-center gap-2 px-3 py-3 rounded-xl border font-sans text-xs font-semibold uppercase tracking-wider transition-all text-left active:scale-[0.98] ${
                       isSelected
-                        ? `${opt.activeClass} shadow-neu-sm-pressed translate-y-[1px]`
-                        : `${opt.colorClass} hover:translate-y-[-1px]`
+                        ? `${opt.activeClass}`
+                        : `${opt.colorClass}`
                     }`}
                     style={{ minHeight: "48px" }}
                   >
-                    <Icon className={`w-4 h-4 shrink-0 ${isSelected ? "animate-spin-slow text-white" : ""}`} />
+                    <Icon className="w-4 h-4 shrink-0" />
                     <span>{opt.label}</span>
                   </button>
                 );
@@ -142,14 +141,14 @@ export const TaskStatusModal: React.FC<TaskStatusModalProps> = ({ task, isOpen, 
             </div>
           </div>
 
-          {/* Remarks text logs field */}
+          {/* Remarks/Notes */}
           <div>
-            <div className="flex justify-between items-center mb-1.5 font-mono text-[10px] font-bold uppercase tracking-wider">
-              <label className="text-text/60">
-                Log Notes {isNotesRequired && <span className="text-danger">*</span>}
+            <div className="flex justify-between items-center mb-1.5 font-sans text-xs font-bold uppercase tracking-wide">
+              <label className="text-slate-500">
+                Log Notes {isNotesRequired && <span className="text-red-500">*</span>}
               </label>
               {isNotesRequired && (
-                <span className="text-danger/80 font-bold uppercase tracking-widest text-[8px] animate-pulse">
+                <span className="text-red-500 font-bold uppercase tracking-widest text-[8px] animate-pulse">
                   Block Notes Required
                 </span>
               )}
@@ -164,15 +163,15 @@ export const TaskStatusModal: React.FC<TaskStatusModalProps> = ({ task, isOpen, 
                   : "Add any task completion notes or remarks (optional)..."
               }
               rows={4}
-              className="neu-input bg-surface shadow-neu-sm-pressed font-sans text-xs border-0 rounded-lg w-full p-3 text-text focus:outline-none resize-none"
+              className="bg-white border border-slate-200 font-sans text-sm rounded-xl w-full p-3.5 text-slate-800 focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none transition-all"
             />
           </div>
 
-          {/* Submit details panel */}
+          {/* Submit */}
           <div className="pt-2">
             <Button
               type="submit"
-              variant={selectedStatus === "COMPLETED" ? "primary" : "secondary"}
+              variant="primary"
               fullWidth
               isLoading={isSubmitting}
               disabled={isSubmitDisabled}

@@ -1,31 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:wght@400;700&display=swap');
 
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
-  --color-primary: #006666;
-  --color-secondary: #F1F2F5;
-  --color-success: #00A63D;
-  --color-warning: #FE9900;
-  --color-danger: #FF2157;
-  --color-surface: #E7E5E4;
-  --color-text: #1E2938;
+  --color-primary: #3A9DE9;
+  --color-secondary: #F8FAFC;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-surface: #FFFFFF;
+  --color-text: #0F172A;
   --color-zivio-blue: #3A9DE9;
+  --color-border: #F1F5F9;
 
-  --font-sans: var(--font-sans), "Geist", "Geist Fallback", sans-serif;
-  --font-mono: var(--font-mono), "Geist Mono", "Geist Mono Fallback", monospace;
-
-  --shadow-neu-flat: 8px 8px 16px #c5c5c5, -8px -8px 16px #ffffff;
-  --shadow-neu-pressed: inset 8px 8px 16px #c5c5c5, inset -8px -8px 16px #ffffff;
-  --shadow-neu-sm: 4px 4px 8px #c5c5c5, -4px -4px 8px #ffffff;
-  --shadow-neu-sm-pressed: inset 4px 4px 8px #c5c5c5, inset -4px -4px 8px #ffffff;
-
-  --radius-neu: 20px;
+  --font-sans: "Plus Jakarta Sans", var(--font-sans), sans-serif;
+  --font-mono: "JetBrains Mono", var(--font-mono), monospace;
 }
 
 :root {
-  --background: #E7E5E4;
-  --foreground: #1E2938;
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --sidebar-width: 260px;
 }
 
 body {
@@ -34,29 +31,44 @@ body {
   font-family: var(--font-sans);
 }
 
-@utility neu-card {
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-neu-flat);
-  border-radius: var(--radius-neu);
-  padding: 1.5rem;
+/* Smooth scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
 }
 
-@utility neu-button {
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-neu-sm);
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.2s ease-in-out;
-  
-  &:active {
-    box-shadow: var(--shadow-neu-sm-pressed);
-  }
+/* Selection color */
+::selection {
+  background-color: rgba(58, 157, 233, 0.15);
+  color: #0F172A;
 }
 
-@utility neu-input {
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-neu-sm-pressed);
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  outline: none;
+/* Dark mode overrides */
+.dark {
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+}
+
+.dark body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

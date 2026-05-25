@@ -1,20 +1,25 @@
 import React from "react";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "flat" | "pressed";
+  variant?: "flat" | "pressed" | "outline";
   padding?: "none" | "sm" | "md" | "lg";
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ className = "", variant = "flat", padding = "md", children, ...props }, ref) => {
-    let shadowClass = "";
+    let cardStyleClass = "";
     switch (variant) {
       case "pressed":
-        shadowClass = "shadow-neu-pressed";
+        // Soft recess for list containers or embedded panels
+        cardStyleClass = "bg-slate-50/50 border border-slate-100 dark:bg-slate-800/40 dark:border-slate-800/80 shadow-inner";
+        break;
+      case "outline":
+        cardStyleClass = "bg-transparent border border-slate-200 dark:border-slate-800";
         break;
       case "flat":
       default:
-        shadowClass = "shadow-neu-flat";
+        // Premium elevation card
+        cardStyleClass = "bg-white border border-slate-100 dark:bg-slate-900 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow duration-200";
         break;
     }
 
@@ -24,21 +29,21 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         paddingClass = "p-0";
         break;
       case "sm":
-        paddingClass = "p-3";
+        paddingClass = "p-3 sm:p-4";
         break;
       case "lg":
-        paddingClass = "p-8";
+        paddingClass = "p-6 sm:p-8";
         break;
       case "md":
       default:
-        paddingClass = "p-6";
+        paddingClass = "p-4 sm:p-6";
         break;
     }
 
     return (
       <div
         ref={ref}
-        className={`bg-surface rounded-neu border border-white/40 ${shadowClass} ${paddingClass} ${className}`}
+        className={`rounded-[24px] ${cardStyleClass} ${paddingClass} ${className}`}
         {...props}
       >
         {children}

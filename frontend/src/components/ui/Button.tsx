@@ -1,40 +1,44 @@
 import React from "react";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost" | "danger";
+  variant?: "primary" | "secondary" | "ghost" | "danger" | "outline";
+  shape?: "rounded" | "pill";
   isLoading?: boolean;
   fullWidth?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className = "", variant = "secondary", isLoading, fullWidth, children, disabled, ...props }, ref) => {
-    // Determine visual class based on variant
+  ({ className = "", variant = "secondary", shape = "rounded", isLoading, fullWidth, children, disabled, ...props }, ref) => {
     let variantClass = "";
     switch (variant) {
       case "primary":
-        variantClass = "bg-primary text-white hover:bg-opacity-95 shadow-neu-sm active:shadow-neu-sm-pressed active:translate-y-[1px]";
+        variantClass = "bg-[#3A9DE9] text-white hover:bg-[#2480CC] shadow-sm hover:shadow active:scale-[0.98]";
         break;
       case "danger":
-        variantClass = "bg-danger text-white hover:bg-opacity-95 shadow-neu-sm active:shadow-neu-sm-pressed active:translate-y-[1px]";
+        variantClass = "bg-danger text-white hover:bg-red-600 shadow-sm hover:shadow active:scale-[0.98]";
+        break;
+      case "outline":
+        variantClass = "bg-transparent text-slate-700 border border-slate-200 hover:bg-slate-50 active:scale-[0.98]";
         break;
       case "ghost":
-        variantClass = "bg-transparent text-text hover:bg-surface shadow-none border border-transparent active:bg-secondary/10";
+        variantClass = "bg-transparent text-text hover:bg-slate-50 border border-transparent active:bg-slate-100";
         break;
       case "secondary":
       default:
-        variantClass = "neu-button hover:translate-y-[-1px] active:translate-y-[1px]";
+        variantClass = "bg-slate-100 text-slate-700 hover:bg-slate-200 shadow-sm active:scale-[0.98]";
         break;
     }
 
     const widthClass = fullWidth ? "w-full" : "";
-    const disabledClass = disabled || isLoading ? "opacity-60 cursor-not-allowed transform-none translate-y-0" : "";
+    const disabledClass = disabled || isLoading ? "opacity-50 cursor-not-allowed transform-none active:scale-100 pointer-events-none" : "";
+    const shapeClass = shape === "pill" ? "rounded-full px-6" : "rounded-xl px-4";
 
     return (
       <button
         ref={ref}
         disabled={disabled || isLoading}
-        className={`inline-flex items-center justify-center font-mono text-sm font-semibold rounded-lg px-4 py-2.5 transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${variantClass} ${widthClass} ${disabledClass} ${className}`}
-        style={{ minHeight: "44px" }}
+        className={`inline-flex items-center justify-center font-sans text-xs sm:text-sm font-bold transition-all duration-150 focus:outline-none ${variantClass} ${widthClass} ${disabledClass} ${shapeClass} ${className}`}
+        style={{ minHeight: "40px" }}
         {...props}
       >
         {isLoading && (

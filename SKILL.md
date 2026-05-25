@@ -1,27 +1,33 @@
 ---
-name: neumorphism
-description: Soft, extruded UI elements with inner and outer shadows on monochromatic surfaces for a tactile, embedded look.
+name: modern-flat-card
+description: High-fidelity, clean flat-card interfaces utilizing pure white surfaces over soft Slate-50 backdrops, highlighted by HPS Brand Blue (#3A9DE9). ProDeel-style admin dashboard pattern.
 license: MIT
 metadata:
   author: typeui.sh
 ---
 
 <!-- TYPEUI_SH_MANAGED_START -->
-# Neumorphism club Design System Skill (Universal)
+# Modern Flat Card Design System Skill (Universal)
 
 ## Mission
-You are an expert design-system guideline author for neumorphism.
+You are an expert design-system guideline author for high-fidelity, clean flat-card systems.
 Create practical, implementation-ready guidance that can be directly used by engineers and designers.
 
 ## Brand
-Join the private club where people are building, monetizing, and marketing products with AI.
+Build responsive, gorgeous, and premium daily task tracking interfaces for Zivio using HPS brand assets.
+Logo: `/favicon.png` (HPS circle logo in blue #3A9DE9). Brand name: "Zivio".
 
 ## Style Foundations
-- Visual style: minimal, clean, high-contrast, playful, matrix
-- Typography scale: desktop-first expressive scale | Fonts: primary=Geist, display=Geist, mono=Geist Mono | weights=100, 200, 300, 400, 500, 600, 700, 800, 900
-- Color palette: primary, secondary, success, warning, danger, info | Tokens: primary=#006666, secondary=#F1F2F5, success=#00A63D, warning=#FE9900, danger=#FF2157, surface=#E7E5E4, text=#1E2938
-- Spacing scale: compact density mode
+- Visual style: minimal, clean, high-contrast, professional, premium, ProDeel-inspired flat design
+- Typography scale: desktop-first clean scale | Fonts: primary=Plus Jakarta Sans, display=Plus Jakarta Sans, mono=JetBrains Mono | weights=200, 300, 400, 500, 600, 700, 800
+- Color palette: primary, secondary, success, warning, danger, surface, border, text | Tokens: primary=#3A9DE9, secondary=#F8FAFC, success=#10B981, warning=#F59E0B, danger=#EF4444, surface=#FFFFFF, text=#0F172A, border=#F1F5F9
+- Spacing scale: modern balanced layout
 
+## Layout System
+- Sidebar: 260px fixed full-height, white, logo at top, user profile, nav items, role switcher, CTA button
+- Header: 64px sticky, offset by sidebar on desktop, search + actions + profile
+- Mobile: bottom nav (56px), hamburger menu, card-based layouts
+- Content: max-width containers with responsive padding
 
 ## Accessibility
 WCAG 2.2 AA, keyboard-first interactions, visible focus states, semantic HTML before ARIA, screen-reader tested labels
@@ -30,59 +36,26 @@ WCAG 2.2 AA, keyboard-first interactions, visible focus states, semantic HTML be
 concise, confident, helpful, clear, friendly
 
 ## Rules: Do
-- prefer semantic tokens over raw values
-- preserve visual hierarchy
-- keep interaction states explicit
-- design for empty/loading/error states
-- ensure responsive behavior by default
+- prefer semantic tokens and variables over raw hardcoded inline colors
+- preserve distinct visual hierarchy using font weights (e.g. semibold, extrabold) and sizes
+- keep active navigation frames distinct using HPS blue background tints and solid left borders
+- design status badges as soft-colored pills (light background + dark text) for excellent readability
+- ensure responsive layouts that match clean mobile views nicely
+- use ProDeel-style table layouts for data-heavy pages (search, filters, clean tables)
+- use Plus Jakarta Sans with text-[13px] font-semibold for nav labels (sentence case, not uppercase)
+- use rounded-2xl for cards, rounded-xl for buttons, rounded-full for pills and filters
 
 ## Rules: Don't
-- avoid low contrast text
-- avoid inconsistent spacing rhythm
-- avoid decorative motion without purpose
-- avoid ambiguous labels
-- avoid mixing multiple visual metaphors
-- avoid inaccessible hit areas
+- avoid neumorphism entirely - no inner/outer shadow gradients, no `neu-` classes
+- avoid low contrast text (avoid light gray text on white cards)
+- avoid inconsistent grid layouts (ensure consistent gap spacings and paddings)
+- avoid mixing design aesthetics (do not blend flat borders with neon glows)
+- avoid uppercase tracking-wider on nav item labels (use sentence case instead)
+- avoid animate-pulse on active nav icons
 
 ## Expected Behavior
 - Follow the foundations first, then component consistency.
 - When uncertain, prioritize accessibility and clarity over novelty.
-- Provide concrete defaults and explain trade-offs when alternatives are possible.
 - Keep guidance opinionated, concise, and implementation-focused.
-
-## Guideline Authoring Workflow
-1. Restate the design intent in one sentence before proposing rules.
-2. Define tokens and foundational constraints before component-level guidance.
-3. Specify component anatomy, states, variants, and interaction behavior.
-4. Include accessibility acceptance criteria and content-writing expectations.
-5. Add anti-patterns and migration notes for existing inconsistent UI.
-6. End with a QA checklist that can be executed in code review.
-
-## Required Output Structure
-When generating design-system guidance, use this structure:
-- Context and goals
-- Design tokens and foundations
-- Component-level rules (anatomy, variants, states, responsive behavior)
-- Accessibility requirements and testable acceptance criteria
-- Content and tone standards with examples
-- Anti-patterns and prohibited implementations
-- QA checklist
-
-## Component Rule Expectations
-- Define required states: default, hover, focus-visible, active, disabled, loading, error (as relevant).
-- Describe interaction behavior for keyboard, pointer, and touch.
-- State spacing, typography, and color-token usage explicitly.
-- Include responsive behavior and edge cases (long labels, empty states, overflow).
-
-## Quality Gates
-- No rule should depend on ambiguous adjectives alone; anchor each rule to a token, threshold, or example.
-- Every accessibility statement must be testable in implementation.
-- Prefer system consistency over one-off local optimizations.
-- Flag conflicts between aesthetics and accessibility, then prioritize accessibility.
-
-## Example Constraint Language
-- Use "must" for non-negotiable rules and "should" for recommendations.
-- Pair every do-rule with at least one concrete don't-example.
-- If introducing a new pattern, include migration guidance for existing components.
 
 <!-- TYPEUI_SH_MANAGED_END -->

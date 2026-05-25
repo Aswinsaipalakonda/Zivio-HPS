@@ -26,11 +26,11 @@ export const Avatar: React.FC<AvatarProps> = ({ name = "User", imageUrl, size = 
       break;
     case "lg":
       sizeClass = "w-16 h-16";
-      textClass = "text-xl";
+      textClass = "text-lg";
       break;
     case "md":
     default:
-      sizeClass = "w-11 h-11";
+      sizeClass = "w-10 h-10";
       textClass = "text-sm";
       break;
   }
@@ -39,7 +39,7 @@ export const Avatar: React.FC<AvatarProps> = ({ name = "User", imageUrl, size = 
 
   return (
     <div
-      className={`relative inline-flex items-center justify-center rounded-full bg-surface shadow-neu-sm-pressed border border-white/50 overflow-hidden select-none shrink-0 ${sizeClass} ${className}`}
+      className={`relative inline-flex items-center justify-center rounded-full bg-slate-100 border border-slate-200 overflow-hidden select-none shrink-0 ${sizeClass} ${className}`}
       {...props}
     >
       {showImage ? (
@@ -51,7 +51,7 @@ export const Avatar: React.FC<AvatarProps> = ({ name = "User", imageUrl, size = 
           onError={() => setImageError(true)}
         />
       ) : (
-        <span className="font-bold font-mono text-text/80 tracking-wide">
+        <span className={`font-semibold text-slate-600 tracking-wide ${textClass}`}>
           {initials || "?"}
         </span>
       )}

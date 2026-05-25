@@ -21,12 +21,12 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateStatus, isRead
 
   return (
     <Card
-      className="transition-all hover:translate-y-[-1px] duration-150 select-none w-full"
-      style={{ borderLeft: `5px solid ${statusColor}` }}
+      className="transition-all hover:-translate-y-[1px] duration-150 select-none w-full border-l-4"
+      style={{ borderLeftColor: statusColor }}
     >
       {/* Header Row */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-        <h3 className="font-mono text-base font-extrabold text-text tracking-wide truncate">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
+        <h3 className="font-sans text-base font-bold text-slate-800 truncate">
           {task.title}
         </h3>
         <div className="shrink-0 flex items-center">
@@ -34,10 +34,10 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateStatus, isRead
         </div>
       </div>
 
-      {/* Description section (expandable) */}
+      {/* Description section */}
       <div className="mb-4">
         <p
-          className={`text-sm text-text/65 font-sans leading-relaxed transition-all duration-200 ${
+          className={`text-sm text-slate-500 font-sans leading-relaxed transition-all duration-200 ${
             isExpanded ? "line-clamp-none" : "line-clamp-2"
           }`}
         >
@@ -48,7 +48,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateStatus, isRead
         {task.description.length > 120 && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex items-center gap-1 mt-1 text-xs font-mono font-bold uppercase tracking-wider text-primary hover:text-primary/80 focus:outline-none"
+            className="flex items-center gap-1 mt-1 text-xs font-semibold text-primary hover:text-[#2480CC] focus:outline-none"
           >
             {isExpanded ? (
               <>
@@ -67,19 +67,19 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateStatus, isRead
 
       {/* Submitted notes if active */}
       {notes && (
-        <div className="mb-4 bg-surface/50 p-3 rounded-lg border border-white/40 shadow-neu-sm-pressed">
-          <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-text/50 block mb-1">
+        <div className="mb-4 bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
             Status Logs Notes
           </span>
-          <p className="text-xs text-text/75 font-sans italic leading-relaxed">
+          <p className="text-xs text-slate-600 font-sans italic leading-relaxed">
             "{notes}"
           </p>
         </div>
       )}
 
-      {/* Footer row containing timestamp details & actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-3 border-t border-text/5 mt-2">
-        <div className="flex items-center gap-2 text-text/45 font-mono text-[10px] font-medium">
+      {/* Footer row */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-3 border-t border-slate-100 mt-2">
+        <div className="flex items-center gap-2 text-slate-400 font-sans text-xs">
           <Clock className="w-3.5 h-3.5 shrink-0" />
           <span>
             Last active: {task.log ? formatDate(task.log.logged_at, "hh:mm a, dd MMM") : "Never"}
@@ -88,15 +88,15 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateStatus, isRead
 
         {/* Status update action control */}
         {isReadOnly ? (
-          <div className="flex items-center gap-1.5 text-text/30 font-mono text-[9px] font-bold uppercase tracking-widest leading-none bg-surface/30 px-2.5 py-1.5 rounded-md border border-text/5 shrink-0 select-none">
+          <div className="flex items-center gap-1.5 text-slate-400 font-sans text-[10px] font-bold uppercase tracking-widest leading-none bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-100 shrink-0 select-none">
             <Lock className="w-3 h-3" />
             <span>Read-Only</span>
           </div>
         ) : (
           onUpdateStatus && (
             <Button
-              variant="secondary"
-              className="w-full sm:w-auto h-9 text-xs py-0 shrink-0 shadow-neu-sm bg-surface active:shadow-neu-sm-pressed"
+              variant="outline"
+              className="w-full sm:w-auto h-9 text-xs py-0 shrink-0 border-slate-200"
               style={{ minHeight: "36px" }}
               onClick={() => onUpdateStatus(task)}
             >

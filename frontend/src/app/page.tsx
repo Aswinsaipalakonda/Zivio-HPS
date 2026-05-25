@@ -20,29 +20,27 @@ export default function RootPage() {
       } else if (role === "EMPLOYEE" || role === "INTERN") {
         router.push("/dashboard");
       } else {
-        // Fallback for unauthorized email allowlist denials
         router.push("/unauthorized");
       }
     }
   }, [isLoading, isSignedIn, role, router]);
 
-  // Premium, pulsing monochromatic loading screen while resolving routing redirect
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-surface p-6">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-6">
       <div className="relative flex flex-col items-center select-none">
-        {/* Pulsing logo ring representing neumorphic aesthetics */}
-        <div className="w-24 h-24 rounded-full bg-surface shadow-neu-sm border border-white/50 flex items-center justify-center animate-pulse mb-4">
+        {/* Clean loading spinner with brand logo */}
+        <div className="w-20 h-20 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center animate-pulse mb-5">
           <Image
-            src="/logo.png"
-            alt="HPS Logo"
-            width={48}
-            height={48}
+            src="/favicon.png"
+            alt="Zivio Logo"
+            width={40}
+            height={40}
             className="object-contain"
             priority
           />
         </div>
-        <h1 className="font-mono text-xs font-bold uppercase tracking-widest text-text/50 animate-pulse">
-          Securing Session...
+        <h1 className="font-sans text-xs font-bold uppercase tracking-widest text-slate-400 animate-pulse">
+          Loading Workspace...
         </h1>
       </div>
     </main>
