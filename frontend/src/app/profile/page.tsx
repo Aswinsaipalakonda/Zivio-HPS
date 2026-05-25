@@ -94,7 +94,7 @@ export default function ProfilePage() {
       <DesktopSidebar navItems={navItems} user={user} />
 
       {/* Main Panel Content */}
-      <main className="lg:pl-[260px] pb-[56px] lg:pb-0 min-h-screen flex flex-col">
+      <main className="flex-1 min-w-0 overflow-hidden lg:pl-[260px] pb-[56px] lg:pb-0 min-h-screen flex flex-col">
         <Header user={user} onMenuClick={() => setIsSidebarOpen(true)} />
         <div className="flex-1 p-4 sm:p-6 lg:p-8 flex flex-col items-center justify-center">
           <div className="w-full max-w-xl">

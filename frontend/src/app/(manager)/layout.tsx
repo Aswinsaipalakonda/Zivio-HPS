@@ -41,7 +41,7 @@ export default function ManagerLayout({ children }: { children: React.ReactNode 
           <DesktopSidebar navItems={MANAGER_NAV_ITEMS} user={user} />
 
           {/* Right Side Main Content Panel */}
-          <main className="flex-1 lg:pl-[260px] pb-[56px] lg:pb-0 min-h-[calc(100vh-64px)]">
+          <main className="flex-1 min-w-0 overflow-hidden lg:pl-[260px] pb-[56px] lg:pb-0 min-h-[calc(100vh-64px)]">
             <div className="p-4 sm:p-6 lg:p-8">
               {children}
             </div>
