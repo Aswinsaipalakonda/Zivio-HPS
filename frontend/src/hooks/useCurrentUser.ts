@@ -1,37 +1,41 @@
-import { useUser } from "@clerk/nextjs";
-import { useQuery } from "@tanstack/react-query";
-import { api } from "../lib/api";
-import { QUERY_KEYS } from "../lib/queryKeys";
-import { User } from "../types";
+import { usePathname } from "next/navigation";
+import { User, UserRole } from "../types";
 
 export function useCurrentUser() {
-  const { user: clerkUser, isLoaded: isClerkLoaded, isSignedIn } = useUser();
+  const pathname = usePathname();
 
-  const {
-    data: user,
-    isLoading: isBackendLoading,
-    isError,
-    error,
-  } = useQuery<User>({
-    queryKey: QUERY_KEYS.currentUser,
-    queryFn: async () => {
-      const response = await api.get("/api/auth/me/");
-      return response.data;
-    },
-    enabled: isClerkLoaded && isSignedIn,
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    retry: false, // Do not infinite-retry on 401/403 allowlist denials
-  });
+  // Dynamically determine the active preview role based on URL path namespaces
+  let role: UserRole = "EMPLOYEE";
+  let department = "Software Engineering";
 
-  const isLoading = !isClerkLoaded || (isSignedIn && isBackendLoading);
-  const role = user?.role || null;
+  if (pathname?.startsWith("/manager")) {
+    role = "MANAGER";
+    department = "Delivery & Operations";
+  } else if (pathname?.startsWith("/director")) {
+    role = "DIRECTOR";
+    department = "Executive Board";
+  }
+
+  const mockUser: User = {
+    id: "mock-user-uuid-12345",
+    clerk_user_id: "mock-clerk-id-12345",
+    email: "aswinedu1@gmail.com",
+    full_name: "Aswin",
+    role: role,
+    department: department,
+    profile_picture_url: null,
+    is_active: true,
+    date_joined: "2026-05-25",
+    created_at: "2026-05-25T00:00:00Z",
+    updated_at: "2026-05-25T00:00:00Z",
+  };
 
   return {
-    user,
-    isLoading,
-    isError,
-    error,
-    isSignedIn,
-    role,
+    user: mockUser,
+    isLoading: false,
+    isError: false,
+    error: null,
+    isSignedIn: true,
+    role: role,
   };
 }
