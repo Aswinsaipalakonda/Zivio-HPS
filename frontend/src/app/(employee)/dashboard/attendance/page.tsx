@@ -215,7 +215,7 @@ export default function EmployeeAttendancePage() {
                 const dayOfWeek = getDay(day);
                 const isSunday = dayOfWeek === 0;
 
-                let bgClass = "bg-white dark:bg-slate-850 border-slate-100 dark:border-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300";
+                let bgClass = "bg-white dark:bg-slate-800/40 border-slate-100 dark:border-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300";
                 
                 if (dayLog.status === "PRESENT") {
                   bgClass = "bg-emerald-50/20 dark:bg-emerald-950/10 border-emerald-100 dark:border-emerald-900/30 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 text-emerald-600 dark:text-emerald-400";

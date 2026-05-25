@@ -100,24 +100,24 @@ export const Header: React.FC<HeaderProps> = ({ user, onMenuClick }) => {
         {/* Custom Premium Sliding Capsule Theme Switcher - Perfect pixel alignment */}
         <div
           onClick={handleThemeToggle}
-          className="relative w-14 h-7 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-between px-1.5 cursor-pointer border border-slate-200/40 dark:border-slate-700/40 select-none overflow-hidden"
+          className="relative w-14 h-7 bg-slate-100 dark:bg-slate-800 rounded-full cursor-pointer border border-slate-200/40 dark:border-slate-700/40 select-none overflow-hidden transition-colors duration-200"
         >
           {/* Active Sliding circle bubble */}
           <div
-            className={`absolute top-0.5 left-0.5 w-6 h-6 bg-[#3A9DE9] rounded-full transition-transform duration-300 ease-out shadow-sm flex items-center justify-center ${
+            className={`absolute top-[2px] left-[2px] w-6 h-6 bg-[#3A9DE9] rounded-full transition-transform duration-300 ease-out shadow-sm flex items-center justify-center ${
               isDark ? "translate-x-7" : "translate-x-0"
             }`}
           />
-          {/* Sun Icon */}
+          {/* Sun Icon - absolutely centered on the left */}
           <Sun
-            className={`w-3.5 h-3.5 z-10 ml-1 transition-colors duration-300 ${
-              isDark ? "text-slate-400" : "text-white"
+            className={`w-3.5 h-3.5 absolute left-[7px] top-[7px] z-10 transition-colors duration-300 ${
+              isDark ? "text-slate-400 dark:text-slate-500" : "text-white"
             }`}
           />
-          {/* Moon Icon */}
+          {/* Moon Icon - absolutely centered on the right */}
           <Moon
-            className={`w-3.5 h-3.5 z-10 mr-1 transition-colors duration-300 ${
-              isDark ? "text-white" : "text-slate-400"
+            className={`w-3.5 h-3.5 absolute right-[7px] top-[7px] z-10 transition-colors duration-300 ${
+              isDark ? "text-white" : "text-slate-400 dark:text-slate-550"
             }`}
           />
         </div>
