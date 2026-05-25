@@ -91,6 +91,9 @@ class ClerkJWTAuthentication(BaseAuthentication):
         clerk_user_id = payload.get("sub")
         email = payload.get("email")
         
+        if not email:
+            email = request.headers.get("X-User-Email")
+        
         if not clerk_user_id:
             raise AuthenticationFailed("Clerk user ID (sub claim) is missing in token.")
             
